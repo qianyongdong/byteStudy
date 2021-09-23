@@ -1,0 +1,87 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+  background: 0 0;
+  box-shadow: none;
+  height: 64px;
+  display: flex;
+  align-items: baseline;
+  flex-flow: nowrap;
+}
+#logo {
+  height: 64px;
+  padding-left: 40px;
+  overflow: hidden;
+  color: #000000d9;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: PuHuiTi, -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
+    helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
+    segoe ui emoji, segoe ui symbol, noto color emoji, sans-serif;
+  line-height: 64px;
+  letter-spacing: -0.18px;
+  white-space: nowrap;
+  text-decoration: none;
+  padding-right: 16px;
+  padding-left: 40px;
+}
+#logo img {
+  vertical-align: middle;
+  border-style: none;
+  height: 32px;
+  margin-right: 12px;
+}
+h1 {
+  font-weight: 500;
+}
+.ant-col {
+  position: relative;
+  max-width: 100%;
+  min-height: 1px;
+}
+.menu-row {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  flex: 1;
+}
+.content {
+  clear: both;
+  text-align: center;
+  position: relative;
+  margin-top: 140px;
+}
+.home-card-logo {
+  display: inline-block;
+  max-width: 500px;
+  margin: 0 32px;
+  cursor: pointer;
+  position: relative;
+}
+.home-card-logo img {
+  width: 100%;
+}
+.but {
+  margin-top: 20px;
+}
+
+.but button {
+  margin: 10px;
+}
+.home-card-logo-icon {
+  display: block;
+  position: absolute;
+  top: -20px;
+  left: 339px;
+  width: 64px;
+  height: 64px;
+}
