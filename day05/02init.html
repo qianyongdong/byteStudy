@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">{{counter}}</div>
+</body>
+<script>
+    const Vue = {
+
+        createApp(options) {
+            return {
+                mount(selector) {
+                    // console.log("mount!")
+                    // 1.找到宿主元素
+                    const parent = document.querySelector(selector)
+                    // 2.渲染页面
+                    if (!options.render) {
+                        //  2.1 处理template编译
+                        options.render = this.compile(parent.innerHTML)
+                    }
+                    if (options.setup) {
+                        this.setupState = options.setup()
+                    }
+                    if (options.data) {
+                        this.data = options.data()
+                    }
+                    const proxy = new Proxy(this, {
+                        get(target, key) {
+                            if (target.setupState && key in target.setupState) {
+                                return target.setupState[key]
+                            } else {
+                                return target.data[key]
+                            }
+                        },
+                        set(target, key, val) {
+                            if (target.setupState && key in target.setupState) {
+                                return target.setupState[key] = val
+                            } else {
+                                return target.data[key] = val
+                            }
+                        }
+                    })
+                    //  2.2用户直接编写render
+                    const el = options.render.call(proxy)
+
+                    // //  3.追加到宿主
+                    parent.innerHTML = ""
+
+                    parent.appendChild(el)
+                },
+                compile(template) {
+                    return function render() {
+                        const h3 = document.createElement('h3')
+                        h3.textContent = this.counter
+                        return h3
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                counter: 1
+            }
+        },
+        setup() {
+            return {
+                counter: 'setup'
+            }
+        }
+    }).mount("#app")
+
+
+</script>
+
+</html>

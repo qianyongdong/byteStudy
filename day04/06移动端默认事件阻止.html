@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06移动端默认事件阻止</title>
+</head>
+<style>
+    #box {
+        width: 70vw;
+        height: 70vw;
+        background-color: red;
+        color: white;
+    }
+</style>
+
+<body>
+    <input type="text" name="" id=""> <a href="baidu.com">百度</a>
+    <div id="box"></div>
+    <ul>
+        <li>占位</li>
+        <li>占位</li>
+        <li>占位</li>
+        <li>占位</li>
+        <li>占位</li>
+        <li>占位</li>
+        <li>占位</li>
+        <li>占位</li>
+    </ul>
+    <script>
+        document.addEventListener('touchstart', e => e.preventDefault(), {
+            passive: false
+        })
+        document.addEventListener('touchmove', e => e.preventDefault(), {
+            passive: false
+        })
+        document.addEventListener('touchend', e => e.preventDefault(), {
+            passive: false
+        })
+        /*
+        阻止touchstart事件
+        1滚动
+        2页面缩放
+        3超链接
+        4所有鼠标事件 在移动端执行
+        5.表单相关事件获得焦点
+        6.长按菜单
+        阻止touchmove事件
+        1滚动
+        2页面缩放
+        */
+    </script>
+</body>
+
+</html>

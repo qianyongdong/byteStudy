@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>手淘</title>
+    <script>
+        (function () {
+            var metaEl = document.createElement('meta');
+            var scale = devicePixelRatio;
+            metaEl.setAttribute('name', 'viewport');
+            metaEl.setAttribute('content', 'initial-scale=' + (1 / scale) + ', maximum-scale=' + (1 / scale) + ', minimum-scale=' + (1 / scale) + ', user-scalable=no');
+            document.documentElement.firstElementChild.appendChild(metaEl);
+        })();
+        // root em 设置
+        (function () {
+            // 375/15
+            var doc = document.documentElement;
+            doc.style.fontSize = window.innerWidth / 15 + "px";
+        })();
+        // 1rem = 1屏幕尺寸的15之一
+    </script>
+    <style>
+        body {
+            margin: 0;
+            font-size: 4vw;
+            line-height: 1.5;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #banner {
+            position: relative;
+            width: 100vw;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        #banner_pic {
+            display: flex;
+            transform: translateX(0);
+            height: 8rem;
+        }
+
+        #banner_pic li {
+            flex: none;
+            width: 100vw;
+        }
+
+        #banner_pic img {
+            display: block;
+            width: 100%;
+        }
+
+        #banner_nav {
+            position: absolute;
+            left: 0.64rem;
+            bottom: 1.52rem;
+        }
+
+        #banner_nav span {
+            float: left;
+            margin: .16rem;
+            width: .4rem;
+            height: .16rem;
+            background: #808080;
+            border-radius: .08rem;
+        }
+
+        #banner_nav span.active {
+            background: #ffffff;
+        }
+
+        #banner_bottom {
+            width: 100%;
+            position: absolute;
+            top: 7.16rem;
+            left: 0;
+        }
+
+        #banner_bottom img {
+            width: 100%;
+        }
+
+        #banner_button {
+            position: absolute;
+            top: 1.16rem;
+            left: 50%;
+            width: 8.8rem;
+            background-color: rgba(33, 33, 33, 0.8);
+            border: 1px solid rgba(140, 140, 140, 1);
+            border-radius: .56rem;
+            transform: translate(-50%, 0);
+            font-family: PingFangSC-Regular;
+            font-size: .56rem;
+            color: #FFFFFF;
+            font-weight: 400;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 1.12rem;
+            line-height: 100%;
+        }
+
+        #banner_button span {
+            text-align: center;
+            width: 2.92rem;
+        }
+
+        #banner_button span.active {
+            border-radius: .56rem;
+            line-height: 1.12rem;
+            background: #FFFFFF;
+            border: 1px solid #8C8C8C;
+            color: black;
+            box-sizing: border-box;
+        }
+
+        #banner_top {
+            position: fixed;
+            top: 0;
+            height: 1.44rem;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.60);
+            display: flex;
+            align-items: center;
+        }
+
+        #banner_top>div:first-child {
+            font-family: SIL-Hei-Med-Jian;
+            font-size: .48rem;
+            color: #FFFFFF;
+            text-align: right;
+            font-weight: 400;
+            width: 2.32rem;
+        }
+
+        #banner_top>div:last-child {
+            position: relative;
+            margin: 0 .8rem;
+            background: rgba(113, 107, 107, 0.60);
+            border-radius: .04rem;
+            height: .08rem;
+            width: calc(100% - 3.92rem);
+        }
+
+        .progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 234, 0, 0.60);
+        }
+
+        #poster {
+            margin-top: .84rem;
+            width: 100%;
+            height: 1.48rem;
+        }
+
+        #poster img {
+            width: 100%;
+        }
+
+        #menu {
+            display: flex;
+            margin: ;
+        }
+    </style>
+    <script src="js/babel.js"></script>
+    <script src="js/gesture.js" type="text/babel"></script>
+    <script src="js/Carousel.js" type="text/babel"></script>
+</head>
+
+<body>
+    <div id="banner">
+        <ul id="banner_pic">
+            <li>
+                <img src="https://static001.geekbang.org/resource/image/bb/21/bb38fb7c1073eaee1755f81131f11d21.jpg" />
+            </li>
+            <li>
+                <img src="https://static001.geekbang.org/resource/image/1b/21/1b809d9a2bdf3ecc481322d7c9223c21.jpg" />
+            </li>
+            <li>
+                <img src="https://static001.geekbang.org/resource/image/b6/4f/b6d65b2f12646a9fd6b8cb2b020d754f.jpg" />
+            </li>
+            <li>
+                <img src="./assets/banner.png" />
+            </li>
+            <li>
+                <img src="https://static001.geekbang.org/resource/image/73/e4/730ea9c393def7975deceb48b3eb6fe4.jpg" />
+            </li>
+            <li>
+                <img src="https://static001.geekbang.org/resource/image/b6/4f/b6d65b2f12646a9fd6b8cb2b020d754f.jpg" />
+            </li>
+        </ul>
+        <nav id="banner_nav">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </nav>
+        <div id="banner_top">
+            <div>浏览进度</div>
+            <div>
+                <div class="progress"></div>
+            </div>
+        </div>
+        <div id="banner_button">
+            <span>野兽派十年</span>
+            <span class="active">新品精选</span>
+            <span>开盒有礼</span>
+        </div>
+    </div>
+    <div id="banner_bottom"><img src="./assets/banner_bottom.png" alt=""></div>
+    <div id="poster"><img src="./assets/kaiheyouxi.png" alt=""></div>
+    <div id="menu">
+        <div>
+            <div>尖货抽签</div>
+            <img src="./assets/手办.png" alt="">
+        </div>
+        <div>
+            <div>新品日历</div>
+            <img src="./assets/鞋子.png" alt="">
+        </div>
+    </div>
+    <div id="brand">
+        <div class="brand_title">我的品牌 <span>正在上新</span></div>
+        <div id="brand_list">
+            <div class="brand_item">
+                <div class="brand_item_img">
+                    <img src="./assets/电脑.png" alt="">
+                    <span class="brand_item_img_mark">推荐</span>
+                </div>
+                <div class="brand_item_title">Apple</div>
+            </div>
+        </div>
+    </div>
+    <div id="product">
+        <ul id="product_title_list">
+            <li>趋势</li>
+            <li>趋势</li>
+            <li>趋势</li>
+            <li>趋势</li>
+        </ul>
+        <div id="product_list">
+            <img src="./assets/airpods.png" alt="">
+            <img src="./assets/airpods.png" alt="">
+            <img src="./assets/airpods.png" alt="">
+            <img src="./assets/airpods.png" alt="">
+        </div>
+    </div>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <h3>占位1</h3>
+    <script type="text/babel">
+        {
+            new Carousel({
+                imgList: document.querySelector("#banner_pic"),
+                navs: document.querySelectorAll("#banner_nav span")
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">{{counter}},{{count1}},{{count2}},{{count3}},{{user}}</div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                counter: 1
+            }
+        },
+        setup() {
+            let count1 = 0
+            let count2 = Vue.ref(0)
+
+            let count3 = Vue.isRef(count2) ? 33 : count2
+            let user = Vue.reactive({
+                name: 'qyd',
+                age: '18'
+            })
+
+            return { count1, count2, count3, user, }
+        }
+    }).mount("#app")
+
+
+</script>
+
+</html>
